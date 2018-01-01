@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _04.distanceBetweenPoints
+{
+    class Program
+    {
+        class Point
+        {
+            public int X { get; set; }
+            public int Y { get; set; }
+        }
+        static void Main(string[] args)
+        {
+            Point p1 = ReadPoint();
+            Point p2 = ReadPoint();
+
+            double distance = CalcDistance(p1, p2);
+
+            Console.WriteLine("{0:f3}", distance);
+        }
+
+        private static double CalcDistance(Point p1, Point p2)
+        {
+            int sideA = p2.X - p1.X;
+            int sideB = p2.Y - p1.Y;
+            return Math.Sqrt((sideA * sideA) + (sideB * sideB));
+        }
+
+        private static Point ReadPoint()
+        {
+            int[] pointInfo = Console.ReadLine().Split(' ')
+                .Select(int.Parse).ToArray();
+            Point point = new Point()
+            {
+                X = pointInfo[0],
+                Y = pointInfo[1]
+            };
+            return point;
+        }
+    }
+}
