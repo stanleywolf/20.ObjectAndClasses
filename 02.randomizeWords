@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _02.randomizeWords
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] listOfWords =Console.ReadLine().Split(' ')
+                .ToArray();
+            Random random = new Random();
+            for (int i = 0; i < listOfWords.Length; i++)
+            {
+                int pos1 = random.Next(0,listOfWords.Length);
+                int pos2 = random.Next(0,listOfWords.Length);
+
+                string change = listOfWords[pos1];
+                listOfWords[pos1] = listOfWords[pos2];
+                listOfWords[pos2] = change;
+                
+            }
+            Console.WriteLine(string.Join("\n",listOfWords));
+        }
+    }
+}
